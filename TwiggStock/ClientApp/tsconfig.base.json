@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames":false,
+    "importHelpers":false,
+    "baseUrl": "./src",
+    "paths": {
+      "components": [ "./components" ],
+      "api-helpers": [ "./api/helpers" ],
+      "api-http-client": [ "./api/HttpClient" ],
+      "api-repositories": [ "./api/repositories" ],
+      "state-modules": [ "./state/modules" ],
+      "state": [ "./state" ],
+      "styles": [ "./styles" ],
+      "features": [ "./features" ],
+      "utils": [ "./utils" ],
+      "models": [ "./state/models" ]
+    }
+  }
+}
