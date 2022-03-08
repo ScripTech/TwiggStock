@@ -10,7 +10,7 @@ using Dapper;
 
 namespace TwiggStock.DataAcess
 {
-    public class SQLDataAcessService
+    public class SQLDataAccessContext
     {
         public static string GetConnectionStringConf(string ConnectionName = "SQLConnectionString")
         {

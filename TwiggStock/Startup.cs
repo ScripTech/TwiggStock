@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using DataAccess.Base;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TwiggStock.DataAcess.Models;
+using TwiggStock.DataAcess.Services;
 
 namespace TwiggStock
 {
@@ -28,6 +31,8 @@ namespace TwiggStock
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            services.AddTransient<IBaseResource<UserModel>, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
