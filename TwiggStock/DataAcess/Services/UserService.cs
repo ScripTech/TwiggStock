@@ -43,14 +43,14 @@ namespace TwiggStock.DataAcess.Services
 
         public async Task DeleteResource(UserModel user)
         {
-            string query = @"UPDATE users SET deleted_on = GETDATE() where id = @id";
-            await SQLDataAccessContext.StoreData<int>(query, user.Id);
+            string query = @"UPDATE users SET deleted_on = GETDATE() where uuid = @uuid";
+            await SQLDataAccessContext.StoreData<dynamic>(query, new {uuid = user.Uuid});
         }
 
         public async Task DeleteResourcePermanently(UserModel user)
         {
-            string query = @"DELETE users where id = @id";
-            await SQLDataAccessContext.StoreData<int>(query, user.Id);
+            string query = @"DELETE users where uuid = @uuid";
+            await SQLDataAccessContext.StoreData<dynamic>(query, new {uuid = user.Uuid});
         }
 
         public async Task<List<UserModel>> ListDeletedResources()
@@ -62,8 +62,8 @@ namespace TwiggStock.DataAcess.Services
 
         public async Task RestoreResource(UserModel user)
         {
-            string query = @"UPDATE users SET deleted_on = NULL WHERE id = @id";
-            await SQLDataAccessContext.StoreData<int>(query, user.Id);
+            string query = @"UPDATE users SET deleted_on = NULL WHERE uuid = @uuid";
+            await SQLDataAccessContext.StoreData<dynamic>(query, new {uuid = user.Uuid});
         }
 
         public async Task<UserModel> UpdateResource(UserModel user)

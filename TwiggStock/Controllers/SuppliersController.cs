@@ -123,6 +123,3 @@ namespace TwiggStock.Controllers
         }
     }
 }
-
-// StockInService
-// StockInControlller
