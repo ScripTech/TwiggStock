@@ -12,6 +12,7 @@ using TwiggStock.Transformers;
 
 namespace TwiggStock.Controllers
 {
+    [ApiController]
     public class StockInController : ControllerBase
     {
         public readonly IBaseResource<StockInModel> _stockinService;
@@ -59,7 +60,6 @@ namespace TwiggStock.Controllers
         {
             try
             {
-
                 StockInModel stockModel = new StockInModel {
                     Uuid = Guid.NewGuid(),
                     Description = stockitem.Description,

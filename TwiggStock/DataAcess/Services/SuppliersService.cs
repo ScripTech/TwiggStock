@@ -84,7 +84,7 @@ namespace TwiggStock.DataAcess.Services
             }
             catch (System.Exception ex)
             {
-                throw ex;
+                throw new Exception("SQL error: " + ex.Message);
             }
         }
 

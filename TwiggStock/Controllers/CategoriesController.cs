@@ -12,6 +12,7 @@ using TwiggStock.Transformers;
 
 namespace TwiggStock.Controllers
 {
+    [ApiController]
     public class CategoriesController : ControllerBase
     {
         public readonly IBaseResource<CategoriesModel> _categoriesService;

@@ -33,7 +33,7 @@ namespace TwiggStock.DataAcess.Services
 
             await SQLDataAccessContext.StoreData<StockInModel>(query, stockItem);
 
-            string getResource = @"SELECT * FROM stocks WHERE uuid = @login";
+            string getResource = @"SELECT * FROM stocks WHERE uuid = @uuid";
             var response = await SQLDataAccessContext.QueryData<StockInModel, dynamic>(getResource, new { stockItem.Uuid });
             return response.FirstOrDefault();
         }
