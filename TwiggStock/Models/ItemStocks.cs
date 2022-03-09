@@ -22,7 +22,7 @@ namespace TwiggStock.Models
         public double Value { get; set; } = 0.0;
         public string Item_Model { get; set; }
         public System.Guid Author_id { get; set; }
-        public DateTime spent_date { get; set; } = DateTime.Now;
+        public DateTime spent_date { get; set; }
         public string spent_category { get; set; }
     }
 }

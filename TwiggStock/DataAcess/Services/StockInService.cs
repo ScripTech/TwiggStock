@@ -52,7 +52,7 @@ namespace TwiggStock.DataAcess.Services
 
         public async Task<List<StockInModel>> ListDeletedResources()
         {
-             string query = @"SELECT * from stocks where deleted_on is not null";
+            string query = @"SELECT * from stocks where deleted_on is not null";
             var response = await SQLDataAccessContext.QueryData<StockInModel, dynamic>(query, new { });
             return response.ToList();
         }
