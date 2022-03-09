@@ -65,7 +65,7 @@ namespace TwiggStock.DataAcess.Services
             await SQLDataAccessContext.StoreData<Guid>(query, categorie.Uuid);
         }
 
-        public async Task<CategoriesModel> UpdateResource(CategoriesModel resource)
+        public Task<CategoriesModel> UpdateResource(CategoriesModel resource)
         {
             throw new NotImplementedException();
         }

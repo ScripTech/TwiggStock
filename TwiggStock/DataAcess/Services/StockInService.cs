@@ -63,7 +63,7 @@ namespace TwiggStock.DataAcess.Services
             await SQLDataAccessContext.StoreData<dynamic>(query, new { uuid = stockItem.Uuid });
         }
 
-        public async Task<StockInModel> UpdateResource(StockInModel resource)
+        public Task<StockInModel> UpdateResource(StockInModel resource)
         {
             throw new NotImplementedException("You can not update a stock information, delete and created new entrie.");
         }
