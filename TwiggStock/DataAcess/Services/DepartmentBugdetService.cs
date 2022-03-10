@@ -17,6 +17,12 @@ namespace TwiggStock.DataAcess.Services
             string query = @"SELECT * FROM budget inner join departments on budget.department_id = departments.uuid WHERE budget.deleted_on is null";
             var response = await SQLDataAccessContext.QueryData<DepartmentBugdetModel, dynamic>(query, new { });
 
+            foreach (DepartmentBugdetModel budget in response.ToList())
+            {
+                string queryDep = @"SELECT * FROM departments WHERE uuid = @department_id";
+                var departments = await SQLDataAccessContext.QueryData<DepartmentsModel, dynamic>(queryDep, new { department_id = budget.Department_id});
+                budget.department = departments.FirstOrDefault();
+            }
             return response.ToList();
         }
 
@@ -24,6 +30,13 @@ namespace TwiggStock.DataAcess.Services
         {
             string query = @"SELECT * FROM budget inner join departments on budget.department_id = departments.uuid WHERE budget.id = @id and budget.deleted_on is null";
             var response = await SQLDataAccessContext.QueryData<DepartmentBugdetModel, dynamic>(query, new { id = id});
+
+            foreach (DepartmentBugdetModel budget in response.ToList())
+            {
+                string queryDep = @"SELECT * FROM departments WHERE uuid = @department_id";
+                var departments = await SQLDataAccessContext.QueryData<DepartmentsModel, dynamic>(queryDep, new { department_id = budget.Department_id});
+                budget.department = departments.FirstOrDefault();
+            }
 
             return response.First();
         }

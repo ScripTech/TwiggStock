@@ -22,6 +22,8 @@ namespace TwiggStock.DataAcess.Models
         public string Item_Model { get; set; } = "";
 
         #nullable enable
+        public CategoriesModel? Categorie { get; set; }
+        public SuppliersModel? Supplier { get; set; }
         public DateTime? Deleted_on { get; set; }
     }
 }

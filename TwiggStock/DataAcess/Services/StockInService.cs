@@ -15,6 +15,21 @@ namespace TwiggStock.DataAcess.Services
             string query = @"SELECT * FROM stocks WHERE deleted_on is null";
             var response = await SQLDataAccessContext.QueryData<StockInModel, dynamic>(query, new { });
 
+
+            foreach (StockInModel item in response.ToList())
+            {
+                string queryData = @"SELECT * FROM categories WHERE uuid = @categorie_Id";
+                var categorie = await SQLDataAccessContext.QueryData<CategoriesModel, dynamic>(queryData, new { categorie_Id = item.Categorie_Id});
+                item.Categorie = categorie.FirstOrDefault();
+            }
+
+            foreach (StockInModel item in response.ToList())
+            {
+                string queryData = @"SELECT * FROM suppliers WHERE uuid = @supplier_Id";
+                var supplier = await SQLDataAccessContext.QueryData<SuppliersModel, dynamic>(queryData, new { supplier_Id = item.Supplier_Id});
+                item.Supplier = supplier.FirstOrDefault();
+            }
+
             return response.ToList();
         }
 
@@ -22,6 +37,20 @@ namespace TwiggStock.DataAcess.Services
         {
             string query = @"SELECT * FROM stocks WHERE uuid = @uuid and deleted_on is null";
             var response = await SQLDataAccessContext.QueryData<StockInModel, dynamic>(query, new { uuid = id});
+
+            foreach (StockInModel item in response.ToList())
+            {
+                string queryData = @"SELECT * FROM categorie WHERE uuid = @department_id";
+                var categorie = await SQLDataAccessContext.QueryData<CategoriesModel, dynamic>(queryData, new { categorie_Id = item.Categorie_Id});
+                item.Categorie = categorie.FirstOrDefault();
+            }
+
+            foreach (StockInModel item in response.ToList())
+            {
+                string queryData = @"SELECT * FROM suppliers WHERE uuid = @supplier_Id";
+                var supplier = await SQLDataAccessContext.QueryData<SuppliersModel, dynamic>(queryData, new { supplier_Id = item.Supplier_Id});
+                item.Supplier = supplier.FirstOrDefault();
+            }
 
             return response.First();
         }
