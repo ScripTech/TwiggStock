@@ -37,6 +37,7 @@ namespace TwiggStock
             services.AddTransient<IBaseResource<SuppliersModel>, SuppliersService>();
             services.AddTransient<IBaseResource<CategoriesModel>, CategoriesService>();
             services.AddTransient<IBaseResource<StockInModel>, StockInService>();
+            services.AddTransient<IBaseResource<DepartmentBugdetModel>, DepartmentBugdetService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

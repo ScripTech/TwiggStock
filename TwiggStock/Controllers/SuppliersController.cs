@@ -85,7 +85,7 @@ namespace TwiggStock.Controllers
 
         [HttpPost]
         [Route ("/api/v01/suppliers/{id}/update")]
-        public async Task<IActionResult> UpdateDepartmentAsync([FromBody] SuppliersModel reqBody, Guid id)
+        public async Task<IActionResult> UpdateSupplierAsync([FromBody] SuppliersModel reqBody, Guid id)
         {
             SuppliersModel supplier = new SuppliersModel{};
             try
