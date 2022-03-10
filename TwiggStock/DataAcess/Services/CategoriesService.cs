@@ -22,7 +22,7 @@ namespace TwiggStock.DataAcess.Services
 
         public async Task<CategoriesModel> GetResourcesById<U>(U id)
         {
-            string query = @"SELECT * FROM categories inner join suppliers on suppliers.uuid = categories.supplier_id WHERE uuid = @uuid and deleted_on is null limit 1";
+            string query = @"SELECT * FROM categories inner join suppliers on suppliers.uuid = categories.supplier_id WHERE uuid = @uuid and deleted_on is null";
             var response = await SQLDataAccessContext.QueryData<CategoriesModel, dynamic>(query, new { uuid = id});
 
             return response.First();
@@ -42,7 +42,7 @@ namespace TwiggStock.DataAcess.Services
 
         public async Task DeleteResource(CategoriesModel categorie)
         {
-            string query = @"UPDATE categories SET deleted_on = GETDATE() where uuid = @uuid";
+            string query = @"UPDATE users SET deleted_on = GETDATE() where uuid = @uuid";
             await SQLDataAccessContext.StoreData<CategoriesModel>(query, categorie);
         }
 

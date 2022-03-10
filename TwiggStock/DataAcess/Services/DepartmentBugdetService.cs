@@ -14,7 +14,7 @@ namespace TwiggStock.DataAcess.Services
     {
         public async Task<List<DepartmentBugdetModel>> GetResources()
         {
-            string query = @"SELECT * FROM budget WHERE deleted_on is null";
+            string query = @"SELECT * FROM budget inner join departments on budget.department_id = departments.uuid WHERE budget.deleted_on is null";
             var response = await SQLDataAccessContext.QueryData<DepartmentBugdetModel, dynamic>(query, new { });
 
             return response.ToList();
@@ -22,7 +22,7 @@ namespace TwiggStock.DataAcess.Services
 
         public async Task<DepartmentBugdetModel> GetResourcesById<U>(U id)
         {
-            string query = @"SELECT * FROM budget inner join departments on budget.department_id = departments.uuid WHERE id = @id and deleted_on is null limit 1";
+            string query = @"SELECT * FROM budget inner join departments on budget.department_id = departments.uuid WHERE budget.id = @id and budget.deleted_on is null";
             var response = await SQLDataAccessContext.QueryData<DepartmentBugdetModel, dynamic>(query, new { id = id});
 
             return response.First();

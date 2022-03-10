@@ -46,9 +46,9 @@ namespace TwiggStock.Controllers
                 var response = ResponseTransformer.TransformResponse<DepartmentBugdetModel>(budgetModel);
                 return Ok (response);
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-                throw new Exception("User not found");
+                throw new Exception("budgets not found Error: " + ex);
             }
         }
 

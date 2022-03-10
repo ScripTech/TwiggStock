@@ -15,6 +15,8 @@ namespace TwiggStock.DataAcess.Models
         public DateTime Updated_on { get; set; }
         #nullable enable
         public DateTime? Deleted_on { get; set; }
-        public DepartmentsModel? departments { get; set; }
+        public DepartmentsModel? departments { get; }
+        public string? Name { get; set; }
+        public string? Slug_Name { get; set; }
     }
 }
