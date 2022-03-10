@@ -26,7 +26,11 @@ const NotFound = () => {
   );
 };
 
-export default class App extends Component {
+interface Props {
+  isAuthenticated: boolean;
+}
+
+export default class App extends Component<Props> {
   static displayName = App.name;
 
   render() {
@@ -43,7 +47,7 @@ export default class App extends Component {
               component={Home}
             />
             <ProtectedRoute
-              isAuthenticated={true}
+              isAuthenticated={this.props.isAuthenticated}
               exact
               path='/suppliers'
               component={SuppliersView}

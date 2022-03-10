@@ -22,8 +22,8 @@
     "baseUrl": "./src",
     "jsx": "react"
   },
-  "extends": "./tsconfig.base.json",
   "include": [
     "src"
-  ]
+  ],
+  "extends": "./tsconfig.base.json"
 }

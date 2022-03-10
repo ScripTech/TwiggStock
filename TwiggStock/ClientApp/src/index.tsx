@@ -8,11 +8,17 @@ import registerServiceWorker from './registerServiceWorker';
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href') ?? null;
 const rootElement = document.getElementById('root');
 
+import { Provider } from "react-redux";
+import { configureStore } from "state";
+
+const store = configureStore();
+
 ReactDOM.render(
-  <BrowserRouter basename={'baseUrl'}>
-    <App />
-  </BrowserRouter>,
-  rootElement);
+  <Provider store={store}>
+    <App isAuthenticated={true} />
+  </Provider>,
+  document.getElementById("root")
+);
 
 registerServiceWorker();
 
